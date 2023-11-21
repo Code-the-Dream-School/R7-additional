@@ -1,0 +1,12 @@
+<div id="<%= dom_id customer %>">
+  <p>
+    <strong>First name:</strong>
+    <%= customer.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= customer.last_name %>
+  </p>
+
+</div>
