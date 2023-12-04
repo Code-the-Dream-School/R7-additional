@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
+  #validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
   validates :last_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
   validates :phone, presence: true
   validates :phone, numericality: { only_integer: true }
