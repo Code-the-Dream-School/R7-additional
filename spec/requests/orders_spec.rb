@@ -5,7 +5,6 @@ RSpec.describe "Orders", type: :request do
     customer = FactoryBot.create(:customer)
     order_attributes = FactoryBot.attributes_for(:order, customer_id: customer.id)
   end
-=begin
   describe "put order_path with valid data" do
     it "updates an entry and redirects to the show path for the customer" do
       order = FactoryBot.create(:order)
@@ -24,6 +23,4 @@ RSpec.describe "Orders", type: :request do
       expect(response).to render_template(:edit)
     end
   end
-end
-=end
 end
