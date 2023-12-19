@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @customer %>
-
-<div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
-
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
+<div class="list-group">
+  <p style="color: green"><%= notice %></p>
+  <ul class="list-group-item list-group-item-dark">
+    <%= render @customer %>
+  </ul>
+  <div class="btn-group" role="group">
+    <div>
+      <%= link_to "Edit", edit_customer_path(@customer), class: 'btn btn-primary' %> |
+      <%= link_to "Back", customers_path, class: 'btn btn-primary' %>
+    </div>
+    <div>
+      <%= button_to "Delete", @customer, method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
 </div>

@@ -9,21 +9,25 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.collection_select :customer_id, Customer.all, :id, :full_name %>
-  </div>
-  <div class="field">
-    <%= form.label :product_name %>
-    <%= form.text_field :product_name %>
-  </div>
-  <div class="field">
-    <%= form.label :product_count %>
-    <%= form.number_field :product_count %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <form>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :customer_id %> <br>
+        <%= form.collection_select :customer_id, Customer.all, :id, :full_name %> <br>
+      </div>
+      <div class="field mt-2">
+        <%= form.label :product_name %> <br>
+        <%= form.text_field :product_name %> <br>
+      </div>
+      <div class="field mt-2">
+        <%= form.label :product_count %> <br>
+        <%= form.number_field :product_count %> <br>
+      </div>
+
+      <div class="actions"> <br>
+        <%= form.submit %>
+      </div>
+    </div>
+  </form>
 <% end %>

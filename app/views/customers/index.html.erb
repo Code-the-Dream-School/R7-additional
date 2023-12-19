@@ -1,22 +1,28 @@
-<h1>Customers</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Full Name</th>
-      <th>Number of Orders</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %> <!-- Loop through the customers -->
-      <tr>
-        <td><%= customer.full_name %></td>
-        <td><%= customer.orders.count %></td> <!-- Display the number of orders the customer has -->
-        <td><%= button_to 'Show', customer, method: :get %></td>
-        <td><%= button_to 'Edit', edit_customer_path(customer), method: :get %></td>
-        <td><%= button_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'New Customer', new_customer_path %>
+<div class="container mt-5 banner-background">
+  <div class="row">
+    <div class="col-lg">
+      <h1 class="display-4">Customers</h1>
+      <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th>Full Name</th>
+            <th>Number of Orders</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %> <!-- Loop through the customers -->
+            <tr>
+              <td><%= customer.full_name %></td>
+              <td><%= customer.orders.count %></td> <!-- Display the number of orders the customer has -->
+              <td><%= button_to 'Show', customer, method: :get, class: 'btn btn-primary' %></td>
+              <td><%= button_to 'Edit', edit_customer_path(customer), method: :get, class: 'btn btn-primary' %></td>
+              <td><%= button_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'New Customer', new_customer_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

@@ -10,10 +10,55 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% if flash[:alert].present? %>
-    <p class="my_alert"><%= flash[:alert] %></p>
-    <% end %>
-    <%= yield %>
+  <body class = "container-fluid bg-info text-white mt-5">
+    <div class = "container-fluid">
+      <% if flash[:alert].present? %>
+      <p class="my_alert"><%= flash[:alert] %></p>
+      <% end %>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container">
+        <a class="navbar-brand order-1 mr-0" target="_blank"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- customers link and button -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#customers" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Customers
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#customer_list">Customer List</a></li>
+                  <li><a class="dropdown-item" href="#new_customer">New Customer</a></li>
+                </ul>
+              </li> <!-- /customers link and button -->
+
+              <!-- orders link and button -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#orders" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Orders
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#order_list">Order List</a></li>
+                  <li><a class="dropdown-item" href="#new_order">New Order</a></li>
+                </ul>
+              </li> <!-- /orders link and button -->
+          </div>
+        </div>
+      </div>
+    </nav> <!-- /navbar -->
+    
+    <!-- banner -->
+    <div>
+      <div class="banner-background bg-secondary text-white text-center"> 
+        <h1 class="display-2">Customers and Orders</h1>
+        <p class="lead">This is a sample application that associates orders with customers.</p>
+      </div> <!-- /banner --> 
+
+      <%= yield %> <!-- call the index.html.erb -->
+    </div>
   </body>
 </html>

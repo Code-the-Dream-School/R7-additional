@@ -1,17 +1,11 @@
 <div id="<%= dom_id order %>">
-  <h1>Order Details</h1>
-  <p>
-    <strong>Customer Id:</strong>
-    <%= order.customer_id %>
-  </p>
-
-  <p>
-    <strong>Product Name:</strong>
-    <%= order.product_name %>
-  </p>
-
-  <p>
-    <strong>Product Count:</strong>
-    <%= order.product_count %>
-  </p>
+  <div class="col-lg order-lg-3">
+    <h1 class="mb-4">Order Details</h1>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action"><strong>Product Name</strong>: <%= order.product_name %></a>
+        <a href="#" class="list-group-item list-group-item-action"><strong>Product Count</strong>: <%= order.product_count %></a>
+        <a href="#" class="list-group-item list-group-item-action"><strong>Customer</strong>: <%= order.customer.full_name %></a>
+      </div>
+    </div>
+  </div>
 </div>

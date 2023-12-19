@@ -13,6 +13,22 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+:root {
+  --bs-body-bg: #e7a3f0;
+}
+
 .my_alert {
   color: red;
+}
+
+@font-face {
+  font-family: 'Canterbury';
+  src: url('/app/assets/fonts/Canterbury.ttf');
+}
+
+.banner-background {
+  background-image: url('/app/assets/images/nature-nature-landscape.jpg');
+  background-size: cover;
+  font-family: 'Canterbury';
 }

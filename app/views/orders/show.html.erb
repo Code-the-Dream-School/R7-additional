@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="list-group" >
+  <p style="color: green"><%= notice %></p>
+  <ul class="list-group-item list-group-item-dark">
+    <%= render @order %>
 
-  <%= render @order %>
-
-<div>
-  <%= link_to 'Edit', edit_order_path(@order), method: :get %> 
-  <%= link_to 'Back', orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
+    <div class="btn-group" role="group">
+      <div class="">
+        <%= link_to 'Edit', edit_order_path(@order), method: :get, class: 'btn btn-primary' %> 
+        <%= link_to 'Back', orders_path, class: 'btn btn-primary', class: 'btn btn-primary' %>
+      </div>
+      <div>
+        <%= button_to "Delete", @order, method: :delete, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </ul>
 </div>
