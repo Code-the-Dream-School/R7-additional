@@ -10,14 +10,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class = "container-fluid bg-info text-white mt-5">
+  <body class = "container-fluid text-white mt-5" style="background-color: #cfe2ff">
     <div class = "container-fluid">
       <% if flash[:alert].present? %>
-      <p class="my_alert"><%= flash[:alert] %></p>
-      <% end %>
+      <!-- styling alerts-->
+      <p class="my_alert"><%= flash.notice = "The customer record was created successfully." %></p>
+      <% end %> <!-- /styling alerts-->
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <!-- banner -->
+    <div>
+      <div class="banner-background bg-secondary text-white text-center rounded-top"> 
+        <h1 class="display-2">Customers and Orders</h1>
+        <p class="lead mb-0 p-3">This is a sample application that associates orders with customers.</p>
+      </div> <!-- /banner --> 
+
+      <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark rounded-bottom" style="background-color: #adb5bd">
       <div class="container">
         <a class="navbar-brand order-1 mr-0" target="_blank"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,13 +59,6 @@
       </div>
     </nav> <!-- /navbar -->
     
-    <!-- banner -->
-    <div>
-      <div class="banner-background bg-secondary text-white text-center"> 
-        <h1 class="display-2">Customers and Orders</h1>
-        <p class="lead">This is a sample application that associates orders with customers.</p>
-      </div> <!-- /banner --> 
-
       <%= yield %> <!-- call the index.html.erb -->
     </div>
   </body>

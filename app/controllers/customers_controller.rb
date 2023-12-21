@@ -40,7 +40,16 @@ class CustomersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
+=begin
+  def destroy_with_orders
+    if (@customer.orders.exists?)
+      @customer.orders.destroy_all
+    end
+    @customer.destroy
+    flash.notice = "The customer record and all related order records were successfully deleted."
+    redirect_to customers_url
+  end
+=end
   # DELETE /customers/1 or /customers/1.json
   def destroy
     @customer.destroy

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :customers
   # Define a resource for orders with CRUD actions
   resources :orders
+  
+  delete "/customers/customerAndOrders/:id", to: "customers#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
