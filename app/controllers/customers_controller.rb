@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_customer, only: %i[ show edit update destroy destroy_with_orders ]
 
   # GET /customers or /customers.json
   def index
@@ -41,6 +41,7 @@ class CustomersController < ApplicationController
     end
   end
 
+  # DELETE /customers/1 or /customers/1.json
   def destroy_with_orders
     if (@customer.orders.exists?)
       @customer.orders.destroy_all
@@ -50,7 +51,14 @@ class CustomersController < ApplicationController
     redirect_to customers_url
   end
 
-  # DELETE /customers/1 or /customers/1.json
+  def destroy
+    @customer.destroy
+
+    respond_to do |format|
+      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
