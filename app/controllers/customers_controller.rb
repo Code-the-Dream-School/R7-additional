@@ -40,7 +40,7 @@ class CustomersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-=begin
+
   def destroy_with_orders
     if (@customer.orders.exists?)
       @customer.orders.destroy_all
@@ -49,16 +49,8 @@ class CustomersController < ApplicationController
     flash.notice = "The customer record and all related order records were successfully deleted."
     redirect_to customers_url
   end
-=end
-  # DELETE /customers/1 or /customers/1.json
-  def destroy
-    @customer.destroy
 
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  # DELETE /customers/1 or /customers/1.json
 
   private
     # Use callbacks to share common setup or constraints between actions.
