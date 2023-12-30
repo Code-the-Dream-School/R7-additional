@@ -1,0 +1,11 @@
+<div>
+  <h1>Edit Order</h1>
+  <div class="list-group-item list-group-item-dark p-4">
+    <%= render 'form', order: @order %>
+  </div>
+  <br>
+  <div>
+    <%= link_to "Show this order", @order, class: 'btn btn-primary' %> |
+    <%= link_to "Back to orders", orders_path, class: 'btn btn-primary' %>
+  </div>
+</div>

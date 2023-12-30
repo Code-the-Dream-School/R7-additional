@@ -1,0 +1,17 @@
+<div class="list-group">
+  <!-- styling alerts-->
+  <p style="color: green"><%= notice %></p>
+  <!-- /styling alerts-->
+  <ul class="list-group-item list-group-item-dark">
+    <%= render @customer %>
+  </ul>
+  <div class="btn-group" role="group">
+    <div>
+      <%= link_to "Edit", edit_customer_path(@customer), class: 'btn btn-primary' %> |
+      <%= link_to "Back", customers_path, class: 'btn btn-primary' %>
+    </div>
+    <div>
+      <%= button_to "Delete", @customer, method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>
