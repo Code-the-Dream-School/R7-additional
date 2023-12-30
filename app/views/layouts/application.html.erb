@@ -24,40 +24,37 @@
         <p class="lead mb-0 p-3">This is a sample application that associates orders with customers.</p>
       </div> <!-- /banner --> 
 
-      <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark rounded-bottom" style="background-color: #adb5bd">
-      <div class="container">
-        <a class="navbar-brand order-1 mr-0" target="_blank"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!-- customers link and button -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#customers" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Customers
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#customer_list">Customer List</a></li>
-                  <li><a class="dropdown-item" href="#new_customer">New Customer</a></li>
-                </ul>
-              </li> <!-- /customers link and button -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Customers
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/customers">Customers List</a></li>
+            <li><a class="dropdown-item" href="/customers/new">New Customer</a></li>
+          </ul>
+        </li>
 
-              <!-- orders link and button -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#orders" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Orders
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#order_list">Order List</a></li>
-                  <li><a class="dropdown-item" href="#new_order">New Order</a></li>
-                </ul>
-              </li> <!-- /orders link and button -->
-          </div>
-        </div>
-      </div>
-    </nav> <!-- /navbar -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Orders
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/orders">Orders List</a></li>
+            <li><a class="dropdown-item" href="/orders/new">New Order</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     
       <%= yield %> <!-- call the index.html.erb -->
     </div>
