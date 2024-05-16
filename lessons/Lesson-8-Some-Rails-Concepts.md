@@ -2,6 +2,14 @@ It can be useful to understand how Rails works under the covers. This part of th
 
 ## The Flow for a Web Request
 
+The Rails framework is built with an approach called Model/View/Controller (MVC).  
+
+The model describes the data objects that are being managed, and may provide additional methods to communicate with those objects.  When you create the model, you also create the database schema for objects of that type.  In Rails, you communicate with the database using SQL, but the SQL is actually invoked using a wrapper called Active Record.  Active Record is an ORM (object relational mapper), so you can do SQL operations using object oriented programming.
+
+The views are how the application information is shown to the user.  We are using a templating language called ERB for our views.  This allows the views to be populated dynamically on the Rails side before they are sent to the user's browser.  The dynamic population has access to server side data, so it can show the current state of the objects in the database, as well as providing other state information, such as whether a user is logged in.
+
+The controller fields the request from the user and performs the tasks needed to satisfy the request.  This often involves communicating with the model to get database objects, and it always involves sending data back to the user, often by rendering a view.
+
 The Rails server is continually listening for web requests. When one arrives, the request may require that database access or other somewhat time consuming operations are done. But the server has to remain responsive to other requests. Ruby is multithreaded, so the request is handled on a worker thread, while the server continues to listen for more requests on the main thread. The server has a pool of threads, and one is dispatched with the information from the request.
 
 With each request, the browser sends a verb (GET, PUT, PATCH, POST, or DELETE) to a URL, along with some other information such as headers, cookies, and, for PUT, PATCH, and POST, a request body. The URL and the verb determine the route of the request in Rails. The config/routes.rb file contains the information necessary to route the request, or to return a 404 if no route matches. Each route specifies a controller and a method to be invoked. In Rails, each controller is a class. The worker thread does a Controller.new to generate an instance of the matching controller class, and then it calls the corresponding method on the instance that is created. As you’ve seen, the controller performs various actions such as reads or writes to a database, and then returns one of two things: a page (using a render call) or a redirect. Only one of these can occur within a controller method, or it’s a code error. Once that is done, the controller method exits, so the worker thread goes back into the thread pool, waiting idle for the next task.
