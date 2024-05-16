@@ -13,3 +13,36 @@ This repository is to be used as the base for Rails lessons 8, 9, 10, and 11.  T
 [Lesson 11](/lessons/Lesson-11-Styling-Rails-With-Bootstrap.md)  
 [Assignment 11](/lessons/Assignment-11-Styling-Rails-With-Bootstrap.md)  
 
+## Lesson 8 Learning Objectives
+
+- Understanding the Model/View/Controller Approach for aeb application frameworks
+- Understand the flow of a web request coming Into Rails
+- Acquire basic skills with the Ruby debugger in Rails
+- Learn how to handle exceptions that may be thrown by Rails functions
+- Learn how to vaildate user input
+- Handle user input errors
+
+## Lesson 9 Learning Objectives
+
+- Understand why automated testing is important
+- Learn to generate random data for use in testing
+- Acquire familiarity with Rspec automated tests
+- Write model and request tests using Rspec
+
+## Lesson 10 Learning Objectives
+
+- Practice all Rails skills learned to this point
+- Understand the dynamic population of dropdown lists in ERB files
+- Understand foreign keys and foreign key exceptions
+- Learn how to create factories for objects that have assocations through foreign keys
+
+## Assignment 11 Learning Objectives
+
+- Learn the use of the Bootstrap CSS styling framework
+- Learn how to integrate Bootstrap with Rails
+- Understand basic Bootstrap styles for navbars, cards, responsive containers, etfc.
+- Practice the use of these styles
+- Learn about modal windows
+- Use images within a Rails application
+- Use custom fonts within a Rails application
+
