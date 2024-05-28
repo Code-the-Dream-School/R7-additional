@@ -51,7 +51,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js)
 ```
 
 Then run the server, or restart it if it is already running. Verify that the appearance of the application has changed. Note – the precompile step does cause your application to start slowly. You should see something like this:  
-![Starting Bootstrap](/lessons/after-bootstrap.png)
+![Starting Bootstrap](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/after-bootstrap.png?raw=true)
 
 ## Step 2: Changing the Background Color
 
@@ -69,7 +69,7 @@ This value is for light purple, but you can choose any light color you like. Als
 ## Step 3: Adding the Banner
 
 The banner is done as is described at the W3schools Bootstrap Jumbotron link. The jumbotron is no longer a Bootstrap class, but you can do the equivalent. You can use the example from W3schools, but use your own title and text. Refresh your browser page and verify that the banner is there. At this point, you should have something like this:  
-![Bootstrap Banner](/lessons/bootstrap-banner.png)
+![Bootstrap Banner](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-banner.png?raw=true)
 
 ## Step 4: Adding an Image
 
@@ -112,7 +112,7 @@ font-family: 'Canterbury';
 ```
 
 Except that you need to use the name of the font-family you used. Refresh your browser page to verify that the font shows. The screen may look something like this:  
-[![Bootstrap Banner With Font](/lessons/bootstrap-font.png)
+[![Bootstrap Banner With Font](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-font.png?raw=true)
 
 ## Step 6: Add a Navigation Bar
 
@@ -121,14 +121,14 @@ This should be in your layout, within the main div, below the banner but above t
 ## Step 7: Styling Links, Buttons, and Tables
 
 Here you configure the links and buttons in the Customer index view to have the same appearance. The classes you want are `"btn btn-primary"`. You add this class to each of the link\_to and button\_to statements. Then check to see that it looks right. Optionally, you can change the other buttons and links in the application to match. You don’t want to set the style of all buttons and links in your application.scss, because then the links in the navigation bar will look ugly. Also, change the wording on the buttons as you like. Then use Bootstrap table classes to style the tables. At this point, this might be the rough appearance:  
-![Bootstrap Buttons and Tables](https://learn.codethedream.org/wp-content/uploads/2023/10/bootstrap-buttons.png)
+![Bootstrap Buttons and Tables](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-buttons.png?raw=true)
 
 **A tip here:** We do not want a button that says Destroy. We are not trying to destroy a customer, only to delete a record. Software developers have a bad habit of using the wrong words. For example, a medical monitoring application, in the event of network problems, would put up a message that said “Client died”. Doctors found this to be alarming.
 
 ## Step 8\. Showing Orders as Cards in a Grid
 
 You want a responsive grid of cards for your Order index view. The outer div should have the classes `"container-fluid row"`. Inside this you have a loop for each of the orders. First you set up a responsive grid column, by creating a div with class `col-sm`. This style causes the cards to stack if the screen window is too narrow. Then you create a card div for each order. You can and should play with the appearance, but an example styling for the card div might include the attributes `class="card border border-2 border-success p-1 mt-3" style="width: 18rem;"`. This creates fixed width cards with borders. The `border-success` class gives the borders a Bootstrap color, in this case the `$success` color. The `p-1` class causes the cards to be separated with gutters. The `mt-3` class puts a margin at the top of each card, which makes them look ok when they are stacked, if the window is not wide enough. Now, inside this card, you want at least three divs. The first one should have class `"card-header"`, and the second should have class `"card-body"`. You can put appropriate stuff in each as you choose, but be sure that you include the order product name, the order product count, and the customer’s full name. Then, you need a dev with class `"card-footer"`, in which you put edit and delete buttons. The edit and delete buttons should work. You can play with the various options here to get an appearance you like. Then, in your browser, select the Order List view. Check that it looks ok. Check that it is responsive: if you shrink your browser width, the cards stack. Check that the buttons work. Here is a sample appearance:  
-![Bootstrap Card Grid](/lessons/bootstrap-cards.png)
+![Bootstrap Card Grid](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-cards.png?raw=true)
 
 ## Step 9\. Styling Alerts.
 
@@ -150,7 +150,7 @@ You want to change this so that if the `flash\[:notice\]` has a value, a Bootstr
 
 Then test to see that the alerts work, for example by trying /customers/999 or by creating a new order. They should look something like this:
 
-[![Bootstrap Alert](/lessons/bootstrap-alert.png)
+[![Bootstrap Alert](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-alert.png?raw=true)
 
 ## Step 10: Adding Font Awesome Glyphs
 
@@ -255,7 +255,7 @@ And this is the method to add to the controller ( you must also add it to the :s
 ```
 
 The modal window would look like this:  
-[![Bootstrap Modal](/lessons/bootstrap-modal.png)
+[![Bootstrap Modal](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/bootstrap-modal.png?raw=true)
 
 Now, the hard way –but really only slightly harder. This is for orders instead of customers. We’ll only have one modal rendered for the whole page, but we’ll pass data to it. This example shows how you can pass data to a modal.
 
