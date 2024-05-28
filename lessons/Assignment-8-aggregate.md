@@ -34,7 +34,7 @@ Start the rails server. Then, in the browser, go to your / URL path and try the 
 
 You will see the error screen that follows:
 
-![Not found error](/lessons/not-found-error.png)
+![Not found error](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/not-found-error.png?raw=true)
 
 So we debug, as described below.
 
@@ -54,7 +54,7 @@ right before the failing line in that file (right after def set\_customer). Then
 
 Go to your command line session where you are running the server console. You will see something like this:
 
-![debug console](/lessons/debugger.png)
+![debug console](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/debugger.png?raw=true)
 
 ## At the Debugger Prompt
 
@@ -198,7 +198,7 @@ The full\_name method is not a validator. We’ll use that for something else.
 
 Restart the server with the new code, and try to create a customer record with everything blank. You will see this message:
 
-![customer errors](/lessons/customer-errors.png)
+![customer errors](https://github.com/Code-the-Dream-School/R7-additional/blob/41209f64e91198d76f82a1d79a72702acab5dba0/lessons/customer-errors.png?raw=true)
 
 ## How These Messages Come Up
 
