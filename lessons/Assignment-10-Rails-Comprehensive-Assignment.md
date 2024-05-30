@@ -43,13 +43,13 @@ This is documented [here.](https://api.rubyonrails.org/classes/ActionView/Helper
 
 In the rspec test for the order model, you can set up the subject with this line:
 
-```
+```ruby
 subject { Order.new( product_name: "gears", product_count: 7, customer: FactoryBot.create(:customer))}
 ```
 
 In the rspec test for the order controller, you will need a factory that generates an order. But as each order belongs to a customer, the factory has to create the customer object too. To do this, FactoryBot uses the association method:
 
-```
+```ruby
 FactoryBot.define do
   factory :order do
     product_name { Faker::Lorem.word }
@@ -61,7 +61,7 @@ end
 
 The key point here is the use of association. Now, we can do order = FactoryBot.create(:order) and it will create an order for us and store it in the database, creating the necessary customer object as well. Unfortunately, that doesn’t quite solve all our problems. For the post method, we need to get the attributes for an order object. If we do attributes = FactoryBot.attributes\_for(:order) it will not store anything in the database. It will also not create any attributes corresponding to the customer. So we have to create the customer object explicitly, and add its id to the list of attributes, as follows:
 
-```
+```ruby
 customer = FactoryBot.create(:customer)
 order_attributes = FactoryBot.attributes_for(:order, customer_id: customer.id)
 ```
@@ -70,19 +70,19 @@ The resulting attributes could be passed in the parameters when testing the post
 
 Good rspec testing validates that the correct page is displayed, as well as testing that the right changes have been made to the database. If a redirect is expected to occur, one should check that the redirect goes to the right page, for example:
 
-```
+```ruby
 expect(response).to redirect_to orders_path
 ```
 
 If a redirect does not occur, you should check that the right page template is displayed:
 
-```
+```ruby
 expect(response).to render_template(:show)
 ```
 
 Here are a couple example tests from the orders request test that may help to explain rspec request testing:
 
-```
+```ruby
   describe "put order_path with valid data" do
     it "updates an entry and redirects to the show path for the customer" do
       order = FactoryBot.create(:order)
@@ -111,13 +111,13 @@ The database schema for the orders table has a foreign key column, called custom
 
 There are several possible fixes. First, we could change the Customer model so that the order records are deleted before deleting the customer record. The change is as follows:
 
-```
+```ruby
 has_many :orders, dependent: :destroy
 ```
 
 Try this. You can now destroy the customer entry, even if the customer has orders. But, does this make sense in this application? If a customer had many orders, you probably would not want to delete all that information. So, change the line in the Customer model back, to read:
 
-```
+```ruby
 has_many :orders
 ```
 
@@ -125,7 +125,7 @@ Another way to solve the problem is to change the schema to remove the foreign k
 
 The third way to solve the problem is to give the user a friendly error message. We do this by catching the exception, as follows:
 
-```
+```ruby
   def destroy
     begin
       @customer.destroy
