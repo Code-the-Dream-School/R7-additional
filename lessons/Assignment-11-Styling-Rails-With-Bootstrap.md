@@ -22,14 +22,14 @@ The specifications for the assignment are below. There are instructions for each
 2. Edit the Gemfile. Uncomment the line for the sassc-rails gem, and then run bundle install to make sure you have this gem.
 3. Rename `app/assets/stylesheets/application.css` to `application.scss`. Then add the line
 
-```
+```ruby
 @import "bootstrap";
 
 ```
 
 1. Edit `app/javascript/application.js` and add these lines:
 
-```
+```ruby
 import "popper"
 import "bootstrap"
 
@@ -37,7 +37,7 @@ import "bootstrap"
 
 1. Edit `config/importmap.rb` and add these lines:
 
-```
+```ruby
 pin "popper", to: 'popper.js', preload: true
 pin "bootstrap", to: 'bootstrap.min.js', preload: true
 
@@ -45,7 +45,7 @@ pin "bootstrap", to: 'bootstrap.min.js', preload: true
 
 1. Edit `config/initializers/assets.rb` and add this line:
 
-```
+```ruby
 Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js)
 
 ```
@@ -89,7 +89,7 @@ Then refresh the page and verify that the image shows in the banner.
 
 Create the directory `app/assets/fonts`. Find a font. There are free ones on the net. Store it in `app/assets/fonts`. You will typically have to unpack it from a zip file. You should delete the zip file, and you will typically be left with a ttf file or something like that. Then, edit `config/application.rb`, and within the class Application section, add the line:
 
-```
+```ruby
 config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
 ```
@@ -134,16 +134,14 @@ You want a responsive grid of cards for your Order index view. The outer div sho
 
 In the previous lesson, you put a red alert paragraph in the layout. The alert handles, for example, the error that occurs if the user attempts to get an order or customer that doesn’t exist, for example by going to `/customers/999`. Change this so that if the `flash\[:alert\]` has a value, a Bootstrap danger alert is shown. Also, the controllers have statements like:
 
-```
+```ruby
 flash.notice = "The customer record was created successfully."
-
 ```
 
 And the customer views have the line:
 
 ```
 <p style="color: green"><%= notice %></p>
-
 ```
 
 You want to change this so that if the `flash\[:notice\]` has a value, a Bootstrap success alert is shown. The alert divs should be added to the layout, above the navbar but below the banner. You should remove the green notice paragraph lines in the other views.
@@ -158,21 +156,18 @@ Glyphs are small icons that can illustrate a web page. or example, the little ma
 
 ```
 bin/bundle add "font-awesome-sass"
-
 ```
 
 Then add the following line to application.scss:
 
 ```
 @import "font-awesome";
-
 ```
 
 Now add glyphs somewhere on one of the pages. For example, you could add a leading column to the customer index view, with a glyph for a person. Just use the free glyphs, listed [here.](https://fontawesome.com/search?o=r&m=free) You use the icon helper function, like:
 
 ```
 <%= icon('fa-regular', 'bell')%>
-
 ```
 
 ## Step 11: Using a Modal Window
@@ -230,19 +225,17 @@ Here is what the code for the modal might look like:
     </div>
   </div>
 </div>
-
 ```
 
 And this is the route:
 
-```
+```ruby
 delete "/customers/customerAndOrders/:id", to: "customers#destroy_with_orders"
-
 ```
 
 And this is the method to add to the controller ( you must also add it to the :set\_customer list):
 
-```
+```ruby
   def destroy_with_orders
     if (@customer.orders.exists?)
       @customer.orders.destroy_all
@@ -251,7 +244,6 @@ And this is the method to add to the controller ( you must also add it to the :s
     flash.notice = "The customer record and all related order records were successfully deleted."
     redirect_to customers_url
   end
-
 ```
 
 The modal window would look like this:  
