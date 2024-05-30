@@ -88,23 +88,22 @@ Be sure to take all debugger statements out of the code before you push it to pr
 <details>
  <summary> 
     <h2>Assignment 8B - Exception Handling</h2>
-    </summary>
+  </summary>
 
-    Stop the server. Now we want to edit ```customers_controller.rb again```. Add this line near the top of the file, right after the “class” line, but before the “before\_action” line:
+Stop the server. Now we want to edit ```customers_controller.rb again```. Add this line near the top of the file, right after the “class” line, but before the “before\_action” line:
 
-```
+```ruby
 rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
 ```
 
 And, add this method to the bottom of the file, right before the end that ends the class:
 
-```
+```ruby
 def catch_not_found(e)
       Rails.logger.debug("We had a not found exception.")
       flash.alert = e.to_s
       redirect_to customers_path
 end
-
 ```
 
 ## Explaining This Code
@@ -158,7 +157,7 @@ This is a much more user friendly message than before.
     <h2>Assignment 8C - Validation</h2>
     </summary>
 
-    So far, we have talked about byebug, exception handling, logging, layouts, flash messages, and styles. Validation is next. Try this: Create several customers with blank first names or last names or phone numbers with letters in them or with email addresses that don’t have an @ sign. You will see that it just creates these nonsense entries. We wouldn’t want this in a production application. We want the entries to be validated so that they make sense.
+So far, we have talked about byebug, exception handling, logging, layouts, flash messages, and styles. Validation is next. Try this: Create several customers with blank first names or last names or phone numbers with letters in them or with email addresses that don’t have an @ sign. You will see that it just creates these nonsense entries. We wouldn’t want this in a production application. We want the entries to be validated so that they make sense.
 
 We will use a gem called email-validator. Add this line to your Gemfile, above the development, test group:
 
@@ -170,7 +169,7 @@ Then run bundle install so that you pick up this gem.
 
 Next, edit app/models/customer.rb. It should be changed to look like this:
 
-```
+```ruby
 class Customer < ApplicationRecord
  validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
  validates :last_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
@@ -215,11 +214,11 @@ This error handling is provided because we generated the scaffold for customers.
     <h2>Assignment 8D - Error Handling</h2>
     </summary>
 
-    Edit ```app/controllers/customers_controller.rb```. You will see a create and an update method. We won’t explain their current contents right now, because we are going to change them. Comment all the lines out between the def and the end for the create method. Do the same for the update method.
+Edit ```app/controllers/customers_controller.rb```. You will see a create and an update method. We won’t explain their current contents right now, because we are going to change them. Comment all the lines out between the def and the end for the create method. Do the same for the update method.
 
 Now in the create method, put these lines:
 
-```
+```ruby
 @customer = Customer.new(customer_params)
 @customer.save
 flash.notice = "The customer record was created successfully."
@@ -228,11 +227,10 @@ redirect_to @customer
 
 In the update method, put these lines:
 
-```
+```ruby
 @customer.update(customer_params)
 flash.notice = "The customer record was updated successfully."
 redirect_to @customer
-
 ```
 
 These will make the functions work, but without error processing. Now, if you try to create a customer with blank fields, it will not give error messages. It won’t actually create the record, but it will tell you that it succeeded. (By the way, the flash.notice is displayed by the line at the top of app/views/customers/index.html.erb , where it puts out the notice.)
@@ -243,7 +241,7 @@ We need to get our error messages back. Basically, if @customer.save succeeds, i
 
 ## The create Method With Error Handling
 
-```
+```ruby
     @customer = Customer.new(customer_params)
     if @customer.save
       flash.notice = "The customer record was created successfully."
@@ -251,12 +249,11 @@ We need to get our error messages back. Basically, if @customer.save succeeds, i
     else
       render :new, status: :unprocessable_entity
     end
-
 ```
 
 ## The update Method With Error Handling
 
-```
+```ruby
     if @customer.update(customer_params)
       flash.notice = "The customer record was updated successfully."
       redirect_to @customer
