@@ -58,7 +58,7 @@ bundle exec rspec
 
 But as the test cases have not been written, it won’t test anything. Edit spec/models/customer\_spec.rb, copying the following code.
 
-```
+```ruby
 require 'rails_helper'
 RSpec.describe Customer, type: :model do
   subject { Customer.new(first_name: "Jack", last_name: "Smith", phone: "8889995678", email: "jsmith@sample.com" )}
@@ -97,7 +97,7 @@ Now the customer\_spec.rb tests will run. You will see that some results are pri
 
 Edit ./app/models/customer.rb and comment out this line:
 
-```
+```ruby
 validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
 ```
 
@@ -111,7 +111,7 @@ Now add to spec/models/customer\_spec.rb. There are a number of “it” stateme
 
 For request testing, we will use FactoryBot. This acts as a factory for sample data. We will also use Faker. This gem generates plausible values for sample data. Let’s start with the factory. Edit the file ./spec/factories/customers.rb so that it reads as follows:
 
-```
+```ruby
 require 'faker'
 FactoryBot.define do
   factory :customer do |f|
@@ -130,7 +130,7 @@ This provides a means of generating as many sample customer entries as we want.
 
 Copy the following code into the file:
 
-```
+```ruby
 require 'rails_helper'
 RSpec.describe "CustomersControllers", type: :request do
   describe "get customers_path" do
@@ -209,7 +209,7 @@ Request testing tests each of the methods you have in the controller, which meth
 
 To test the edit, put, and delete routes, you need to specify a route to an existing entry. So, you have to create that entry first. You use the factory. Then you pass the id of the customer entry you create to the path. A put request is used to update an entry. So, here is an example of a test of a put request with invalid data:
 
-```
+```ruby
   describe "put customer_path with invalid data" do
     it "does not update the customer record or redirect"
  do
