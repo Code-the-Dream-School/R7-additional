@@ -57,7 +57,7 @@ Then run the server, or restart it if it is already running. Verify that the app
 
 The Bootstrap document includes descriptions of variables that you can set within your CSS to affect the color. At the moment we will just use one of these. Add these lines to your `app/assets/stylesheets/application.css`:
 
-```
+```css
 :root {
    --bs-body-bg: #e7a3f0;
 }
@@ -75,7 +75,7 @@ The banner is done as is described at the W3schools Bootstrap Jumbotron link. Th
 
 Find an image (jpg, gif, or png), and store it in app/assets/images. Then, in your application.scss, create a class .banner-background as follows:
 
-```
+```css
 .banner-background {
   background-image: url('s-l1600.jpg');
   background-size: cover;
@@ -96,7 +96,7 @@ config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
 Then restart the server, so that the fonts directory is added to the asset pipeline. After that, you need to add the following lines to your application.scss:
 
-```
+```css
 @font-face {
   font-family: 'Canterbury';
   src: url('Canterbury.ttf');
@@ -106,7 +106,7 @@ Then restart the server, so that the fonts directory is added to the asset pipel
 
 Except, of course, that you give it a family name and file name corresponding to the font you installed. This stanza should be added above the `.banner-background` style class. Then change the `.banner-background` class to add the line:
 
-```
+```css
 font-family: 'Canterbury'; 
 
 ```
@@ -140,7 +140,7 @@ flash.notice = "The customer record was created successfully."
 
 And the customer views have the line:
 
-```
+```html
 <p style="color: green"><%= notice %></p>
 ```
 
@@ -154,13 +154,13 @@ Then test to see that the alerts work, for example by trying /customers/999 or b
 
 Glyphs are small icons that can illustrate a web page. or example, the little magnifying glass often used for search is typically aglyph, as are emoticons. The most commonly used glyphs come from Font Awesome. To install Font Awesome, do the following:
 
-```
+```bash
 bin/bundle add "font-awesome-sass"
 ```
 
 Then add the following line to application.scss:
 
-```
+```css
 @import "font-awesome";
 ```
 
@@ -197,7 +197,7 @@ Note again, we have a different modal for each customer entry, and each has a di
 
 Here is what the code for the modal might look like:
 
-```
+```html
 <div class="modal" id="<%= "myModal-#{customer.id}" %>">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -253,7 +253,7 @@ Now, the hard way –but really only slightly harder. This is for orders instead
 
 1. Change the button for delete so that instead of triggering the “Are you sure?” prompt followed by a delete, it looks like this instead:
 
-```
+```html
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-id=<%= order.id.to_s %> data-customer="<%= order.customer.full_name %>" data-productname="<%= order.product_name %>" data-productcount="<%= order.product_count %>">Delete</button>
 
 ```
@@ -264,33 +264,33 @@ Now, the hard way –but really only slightly harder. This is for orders instead
 
 Here’s an example of such a modal, with attached JavaScript:
 
-```
-<div class\="modal" id\="myModal"\>
-  <div class\="modal-dialog"\>
-    <div class\="modal-content"\>
+```html
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
       <!-- Modal Header -->
-      <div class\="modal-header"\>
-        <h4 class\="modal-title"\>Are you sure?</h4\>
-        <button type\="button" class\="btn-close" data-bs-dismiss\="modal"\></button\>
-      </div\>
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure?</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
       <!-- Modal body -->
-      <div class\="modal-body"\>
-        <p\>Are you sure you want to delete the order from <span id\="customerName"\></span\>
-            for <span id\="productCount"\></span\>
-            of our <span id\="productName"\></span\> product?
-        </p\>
-      </div\>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the order from <span id="customerName"></span>
+            for <span id="productCount"></span>
+            of our <span id="productName"></span> product?
+        </p>
+      </div>
       <!-- Modal footer -->
-      <div class\="modal-footer"\>
-        <%= button\_to("Delete", nil, method: :delete, class: "btn btn-danger",
+      <div class="modal-footer">
+        <%= button_to("Delete", nil, method: :delete, class: "btn btn-danger",
           data: { "bs-dismiss" => "modal" }, form: {id: "doDelete"})  %>
-        <button type\="button", class\="btn btn-primary" data-bs-dismiss\="modal"\>Cancel
-        </button\>       
-      </div\>
-    </div\>
-  </div\>
-</div\>
-<script\>
+        <button type="button", class="btn btn-primary" data-bs-dismiss="modal">Cancel
+        </button>       
+      </div>
+    </div>
+  </div>
+</div>
+<script>
 document.addEventListener("DOMContentLoaded", () \=> {
   const myModal = document.getElementById("myModal")
   myModal.addEventListener("show.bs.modal", (e) \=> {
@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () \=> {
     doDelete.action = ("/orders/" + triggerButton.getAttribute("data-id"))
   })
 })
-</script\>
+</script>
 
 ```
 

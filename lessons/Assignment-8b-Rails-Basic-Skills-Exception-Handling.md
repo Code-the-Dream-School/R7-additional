@@ -1,12 +1,12 @@
 Stop the server. Now we want to edit ```customers_controller.rb again```. Add this line near the top of the file, right after the “class” line, but before the “before\_action” line:
 
-```
+```ruby
 rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
 ```
 
 And, add this method to the bottom of the file, right before the end that ends the class:
 
-```
+```ruby
 def catch_not_found(e)
       Rails.logger.debug("We had a not found exception.")
       flash.alert = e.to_s
@@ -33,7 +33,7 @@ Now save the controller file, restart the server, and go to the /customers/567 U
 
 Edit the app/views/layouts/application.html.erb file. Add these lines, just below the <body> tag:
 
-```
+```html
 <% if flash[:alert].present? %>
     <p class="my_alert"><%= flash[:alert] %></p>
 <% end %>
@@ -43,7 +43,7 @@ Edit the app/views/layouts/application.html.erb file. Add these lines, just belo
 
 Open app/assets/stylesheets/application.css. Add this CSS style rule at the bottom:
 
-```
+```css
 .my_alert {
   color: red;
 }

@@ -4,7 +4,7 @@ We are going to use a new git branch of your existing customer application for t
 
 We will do automated testing for the customer-order application. Edit the Gemfile. Add the following lines to the :development, :test section of the Gemfile:
 
-```
+```ruby
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'faker'
@@ -14,7 +14,7 @@ gem 'rexml'
 
 These gems will be used to enable testing. After saving your Gemfile, run:
 
-```
+```bash
 bundle install
 ```
 
@@ -22,19 +22,19 @@ bundle install
 
 Enter the following command to complete the setup of rspec:
 
-```
+```bash
 bin/rails generate rspec:install
 ```
 
 Then enter this command to set up the test database:
 
-```
+```bash
 bin/rails db:migrate db:test:prepare
 ```
 
 Then, enter these commands to set up the shells of test classes for the customer model and customers controller:
 
-```
+```bash
 bin/rails generate rspec:model Customer
 bin/rails generate rspec:request Customers
 
@@ -52,7 +52,7 @@ The shells of two test case files have been generated. These are:
 
 You can now run rspec, using the command:
 
-```
+```bash
 bundle exec rspec
 ```
 
@@ -199,7 +199,7 @@ Edit ./app/controllers/customers\_controller.rb . Comment out the line that star
 
 Request testing tests each of the routes you have specified in config/routes.rb. You can see those routes by typing:
 
-```
+```bash
 bin/rails routes
 ```
 
