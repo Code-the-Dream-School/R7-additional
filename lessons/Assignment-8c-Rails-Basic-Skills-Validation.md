@@ -2,7 +2,7 @@ So far, we have talked about byebug, exception handling, logging, layouts, flash
 
 We will use a gem called email-validator. Add this line to your Gemfile, above the development, test group:
 
-```
+```ruby
 gem 'email_validator'
 ```
 
@@ -10,7 +10,7 @@ Then run bundle install so that you pick up this gem.
 
 Next, edit app/models/customer.rb. It should be changed to look like this:
 
-```
+```ruby
 class Customer < ApplicationRecord
  validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
  validates :last_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }

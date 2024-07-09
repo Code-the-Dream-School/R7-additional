@@ -17,7 +17,7 @@ Create a new branch, lesson10.  Be sure you create it when your lesson9 branch i
 
 Use the following commands to get started:
 
-```
+```bash
 bin/rails generate model Order product_name:string product_count:integer customer:references
 bin/rails db:migrate
 bin/rails generate controller orders
@@ -25,7 +25,7 @@ bin/rails generate controller orders
 
 Before you run rspec, you have to migrate the test database:
 
-```
+```bash
 bin/rails db:migrate db:test:prepare
 ```
 

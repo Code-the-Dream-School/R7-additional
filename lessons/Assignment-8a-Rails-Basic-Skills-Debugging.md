@@ -4,14 +4,14 @@ You are going to create another Rails application for the next series of lessons
 
 Do ```bin/bundle install``` to install the gems needed for the repository.  We will start the quick way. (You should have forked and cloned the repository, and run bundle install.) While in your Backend-validations directory, type:
 
-```
+```bash
 bin/rails generate scaffold Customer first_name:string last_name:string phone:string email:string
 bin/rails db:migrate
 ```
 
 Then, edit your config/routes.rb. You are probably tired of seeing the plain Rails screen when you connect your browser to the root path of your application. Right after the Rails.application.routes.draw line of your routes.rb, put the line
 
-```
+```ruby
 root to: 'customers#index'
 ```
 
@@ -59,7 +59,7 @@ params
 
 And it will show you the value of the parameters passed to the controller. In particular, it will show “id”=>”567”. Now type:
 
-```
+```ruby
 Customer.all
 ```
 

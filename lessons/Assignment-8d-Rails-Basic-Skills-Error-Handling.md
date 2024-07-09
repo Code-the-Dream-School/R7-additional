@@ -2,7 +2,7 @@ Edit ```app/controllers/customers_controller.rb```. You will see a create and an
 
 Now in the create method, put these lines:
 
-```
+```ruby
 @customer = Customer.new(customer_params)
 @customer.save
 flash.notice = "The customer record was created successfully."
@@ -11,7 +11,7 @@ redirect_to @customer
 
 In the update method, put these lines:
 
-```
+```ruby
 @customer.update(customer_params)
 flash.notice = "The customer record was updated successfully."
 redirect_to @customer
@@ -26,7 +26,7 @@ We need to get our error messages back. Basically, if @customer.save succeeds, i
 
 ## The create Method With Error Handling
 
-```
+```ruby
     @customer = Customer.new(customer_params)
     if @customer.save
       flash.notice = "The customer record was created successfully."
@@ -39,7 +39,7 @@ We need to get our error messages back. Basically, if @customer.save succeeds, i
 
 ## The update Method With Error Handling
 
-```
+```ruby
     if @customer.update(customer_params)
       flash.notice = "The customer record was updated successfully."
       redirect_to @customer
@@ -54,7 +54,7 @@ If @customer.save or @customer.update return non-nil values, that means they suc
 
 We added a ```full_name``` method to the Customer model class. Additional methods in model classes can be convenient. This will show how. Edit ```app/views/customers/_customer.html.erb``` . Replace this:
 
-```
+```html
   <p>
     <strong>First name:</strong>
     <%= customer.first_name %>
@@ -68,7 +68,7 @@ We added a ```full_name``` method to the Customer model class. Additional method
 
 with this:
 
-```
+```html
   <p>
     <strong>Full name:</strong>
     <%= customer.full_name %>

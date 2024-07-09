@@ -11,14 +11,14 @@ The first of these is debugging.  Fork and clone [this repository.](https://gith
 
 Do ```bin/bundle install``` to install the gems needed for the repository.  We will start the quick way. (You should have forked and cloned the repository, and run bundle install.) While in your Backend-validations directory, type:
 
-```
+```bash
 bin/rails generate scaffold Customer first_name:string last_name:string phone:string email:string
 bin/rails db:migrate
 ```
 
 Then, edit your config/routes.rb. You are probably tired of seeing the plain Rails screen when you connect your browser to the root path of your application. Right after the Rails.application.routes.draw line of your routes.rb, put the line
 
-```
+```ruby
 root to: 'customers#index'
 ```
 
@@ -46,7 +46,7 @@ There is now a debugger built into current versions of Ruby. There is also a gem
 
 According to the error message, the problem occurs in line 67 (your line number may be slightly different) of app/controllers/customers/controller.rb. So, with our editor, we add a line that says just:
 
-```
+```ruby
 debugger
 ```
 
@@ -66,7 +66,7 @@ params
 
 And it will show you the value of the parameters passed to the controller. In particular, it will show “id”=>”567”. Now type:
 
-```
+```ruby
 Customer.all
 ```
 
@@ -124,7 +124,7 @@ Now save the controller file, restart the server, and go to the /customers/567 U
 
 Edit the app/views/layouts/application.html.erb file. Add these lines, just below the <body> tag:
 
-```
+```html
 <% if flash[:alert].present? %>
     <p class="my_alert"><%= flash[:alert] %></p>
 <% end %>
@@ -134,7 +134,7 @@ Edit the app/views/layouts/application.html.erb file. Add these lines, just belo
 
 Open app/assets/stylesheets/application.css. Add this CSS style rule at the bottom:
 
-```
+```css
 .my_alert {
   color: red;
 }
@@ -161,7 +161,7 @@ So far, we have talked about byebug, exception handling, logging, layouts, flash
 
 We will use a gem called email-validator. Add this line to your Gemfile, above the development, test group:
 
-```
+```ruby
 gem 'email_validator'
 ```
 
@@ -268,7 +268,7 @@ If @customer.save or @customer.update return non-nil values, that means they suc
 
 We added a ```full_name``` method to the Customer model class. Additional methods in model classes can be convenient. This will show how. Edit ```app/views/customers/_customer.html.erb``` . Replace this:
 
-```
+```html
   <p>
     <strong>First name:</strong>
     <%= customer.first_name %>
