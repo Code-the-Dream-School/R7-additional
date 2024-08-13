@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% if flash[:alert].present? %>
+      <p class="my_alert"><%= flash[:alert] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
