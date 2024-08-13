@@ -1,14 +1,56 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Customers</h1>
-
 <div id="customers">
-  <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
-  <% end %>
+    <%if @customers.count == 0%>
+      <strong>No customer founded</strong>
+    <% else %>
+     <table>
+      <tr>
+        <th>Name</th>
+        <th>Orders</th>
+        <th>Action</th>
+      </tr>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%=customer.full_name%></td>
+        <td><%=customer.orders.count%></td>
+        <td>
+          <%= link_to "show", customer %>
+          <%= link_to "edit", edit_customer_path(customer) %>
+
+            <%= link_to "delete", customer, data: {turbo_method: :delete, turbo_confirm: 'Confirm delete customer?'} %>
+        </td>
+      </tr>
+        <tr>
+          <% customer.orders.each do |order|%>
+            <tr>
+              <td></td>
+              <td>
+                Order id#
+                <%= order.id%>
+              </td>
+              <td>
+                <%= link_to "show", order %>
+                <%= link_to "edit", edit_order_path(order) %>
+                <%= link_to "delete", order, data: {turbo_method: :delete, turbo_confirm: 'Confirm delete order?'} %>
+              </td>
+            </tr>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= link_to "add order", new_order_path %></td>
+          <td></td>
+        </tr>
+  </table>   
+    <%end%>
+
+    <% end %>
 </div>
 
 <%= link_to "New customer", new_customer_path %>
+
+<div style="display:block;">
+  <%= link_to "All orders", "/orders" %>
+</div>
