@@ -2,16 +2,11 @@
 
 <h1>Orders</h1>
 
-<div id="orders">
+<div id="orders" class="container-fluid d-flex gap-2">
   <% @orders.each do |order| %>
     <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New order", new_order_path %>
-<div style="display:block;">
-  <%= link_to "All customers", "/customers" %>
+<div class="d-flex py-2">
+  <%= link_to "New order", new_order_path, class:"btn btn-primary" %>
 </div>

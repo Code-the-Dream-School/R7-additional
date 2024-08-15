@@ -11,9 +11,15 @@
   </head>
 
   <body>
-    <%= yield %>
-    <% if flash[:alert].present? %>
-        <p class="my_alert"><%= flash[:alert] %></p>
-    <% end %>
+    <div class="container-fluid">
+      <div class="container">
+        <%= render "layouts/navbar"%>
+        <%= render "layouts/hero"%>
+        <%= yield %>
+        <% if flash[:alert].present? %>
+            <p class="my_alert"><%= flash[:alert] %></p>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_customer, only: %i[ show edit update destroy destroy_with_orders]
 
   # GET /customers or /customers.json
   def index
@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       flash.notice = "The customer record was created successfully."
-      redirect_to @customer
+      redirect_to root_url
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
   def update
     if @customer.update(customer_params)
       flash.notice = "The customer record was updated successfully."
-      redirect_to @customer
+      redirect_to root_url
     else
       render :edit, status: :unprocessable_entity
     end
@@ -51,9 +51,18 @@ class CustomersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to customers_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
+  end
+
+  def destroy_with_orders
+    if @customer.orders.exists?
+      @customer.orders.destroy_all
+    end
+    @customer.destroy
+    flash.notice = "The customer record and all related order records were successfully deleted."
+    redirect_to customers_url
   end
 
   private
@@ -70,6 +79,6 @@ class CustomersController < ApplicationController
     def catch_not_found(e)
       Rails.logger.debug("We had a not found exception.")
       flash.alert = e.to_s
-      redirect_to customers_path
+      redirect_to root_url
     end
 end

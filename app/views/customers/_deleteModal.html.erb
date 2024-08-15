@@ -1,0 +1,27 @@
+<div class="modal" id="<%= "myModal-#{customer.id}" %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure?</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       <p>Are you sure you want to delete the customer and order records for <%= customer.full_name %>?
+           That customer has <%= customer.orders.count.to_s %> orders.  If there are any orders for this
+           customer, those orders will be deleted too! </p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <%= button_to("Delete", "/customers/customerAndOrders/#{customer.id}", method: :delete, class: "btn btn-danger", 
+      data: { "bs-dismiss" => "modal" })  %>
+<button type="button", class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>         
+      </div>
+
+    </div>
+  </div>
+</div>

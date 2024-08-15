@@ -1,22 +1,23 @@
-<div id="<%= dom_id customer %>">
-  <p>
-    <strong>Full name:</strong>
-    <%= customer.full_name %>
+<div id="<%= dom_id customer %>"  class="card border border-2 p-1 mt-3" style="width: 18rem;">
+  <p class="card-header">
+    <strong><%= customer.full_name %></strong>
   </p>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= customer.phone %>
-  </p>
+  <div class="card-body">
+    <p>
+      <strong>Tel:</strong>
+      <%= customer.phone %>
+    </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-  </p>
-
-  <p>
-    <strong>Customer string:</strong>
-    <%= customer.string_customer %>
-  </p>
-
+    <p>
+      <strong>Email:</strong>
+      <%= customer.email %>
+    </p>
+  </div>
+  <div>
+  <div class="card-footer d-flex gap-2">
+    <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-primary"%>
+    <%= button_to "Destroy", @customer, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
 </div>

@@ -1,17 +1,18 @@
-<div id="<%= dom_id order %>">
-  <p>
-    <strong>Product name:</strong>
-    <%= order.product_name %>
+<div id="<%= dom_id order %>" class="card border border-2 p-1 mt-3" style="width: 18rem;">
+  <p class="card-header">
+    <strong><%= order.product_name %></strong>
   </p>
 
-  <p>
-    <strong>Product count:</strong>
-    <%= order.product_count %>
-  </p>
+  <div class="card-body">
+    <p>
+      <%= order.customer.first_name %>
+      <%= order.customer.last_name %>
+      bought <%= order.product_name %>: <%= order.product_count %> items
+      </p>
+  </div>
 
-  <p>
-    <strong>Customer:</strong>
-    <%= order.customer_id %>
-  </p>
-
+  <div class="card-footer d-flex gap-1">
+    <%= link_to "Edit", edit_order_path(order), class:"btn btn-primary" %>
+    <%= button_to "Destroy", order, method: :delete, class:"btn btn-danger" %>
+  </div>  
 </div>

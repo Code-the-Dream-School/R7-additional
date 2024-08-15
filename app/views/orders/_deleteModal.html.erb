@@ -1,0 +1,43 @@
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure?</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>Are you sure you want to delete the order from <span id="customerName"></span>
+            for <span id="productCount"></span>
+            of our <span id="productName"></span> product?
+        </p>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <%= button_to("Delete", nil, method: :delete, class: "btn btn-danger",
+          data: { "bs-dismiss" => "modal" }, form: {id: "doDelete"})  %>
+        <button type="button", class="btn btn-primary" data-bs-dismiss="modal">Cancel
+        </button>       
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const myModal = document.getElementById("myModal");
+  myModal.addEventListener("show.bs.modal", (e) => {
+    const triggerButton = e.relatedTarget;
+    const customerName = document.getElementById("customerName");
+    const productName = document.getElementById("productName");
+    const productCount = document.getElementById("productCount");
+    const doDelete = document.getElementById("doDelete");
+    
+    customerName.textContent = triggerButton.getAttribute("data-customer");
+    productName.textContent = triggerButton.getAttribute("data-productname");
+    productCount.textContent = triggerButton.getAttribute("data-productcount");
+    
+    doDelete.action = `/orders/${triggerButton.getAttribute("data-id")}`;
+  });
+});
+</script>

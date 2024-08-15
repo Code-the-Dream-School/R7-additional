@@ -1,11 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
+<%if @customers.count == 0%>
+  <div class="container-fluid rounded-3 text-black-50 p-5 d-flex-col bg-light align-content-center align-items-center align-self-center">
+    <h2>Don't leave this space empty...</h2>
+    <h4>let's create something amazing!</h4>
+  </div>
+<% else %>
 <h1>Customers</h1>
 <div id="customers">
-    <%if @customers.count == 0%>
-      <strong>No customer founded</strong>
-    <% else %>
-     <table>
+
+     <table class="table table-hover">
       <tr>
         <th>Name</th>
         <th>Orders</th>
@@ -16,11 +20,13 @@
         <td><%=customer.full_name%></td>
         <td><%=customer.orders.count%></td>
         <td>
-          <%= link_to "show", customer %>
-          <%= link_to "edit", edit_customer_path(customer) %>
-
-            <%= link_to "delete", customer, data: {turbo_method: :delete, turbo_confirm: 'Confirm delete customer?'} %>
+          <%= link_to "show", customer, class: "btn btn-primary" %>
+          <%= link_to "edit", edit_customer_path(customer), class: "btn btn-warning" %>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal-<%= customer.id%>"> 
+              delete
+            </button>
         </td>
+        <%= render partial: "customers/deleteModal", locals: { customer: customer } %>
       </tr>
         <tr>
           <% customer.orders.each do |order|%>
@@ -31,26 +37,26 @@
                 <%= order.id%>
               </td>
               <td>
-                <%= link_to "show", order %>
-                <%= link_to "edit", edit_order_path(order) %>
-                <%= link_to "delete", order, data: {turbo_method: :delete, turbo_confirm: 'Confirm delete order?'} %>
+                <%= link_to "show", order, class: "btn btn-primary" %>
+                <%= link_to "edit", edit_order_path(order), class: "btn btn-warning" %>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" data-id=<%= order.id.to_s %> data-customer="<%= order.customer.full_name %>" data-productname="<%= order.product_name %>" data-productcount="<%= order.product_count %>">delete</button>
+                <%= render partial: "orders/deleteModal", locals: { order: order } %>
               </td>
             </tr>
           <% end %>
         </tr>
         <tr>
           <td></td>
-          <td><%= link_to "add order", new_order_path %></td>
+          <td>  
+            <%= link_to new_order_path, class: "btn btn-success" do %>
+              <%= icon('fa-regular', 'plus') %> add order
+            <% end %>
+          </td>
           <td></td>
         </tr>
-  </table>   
     <%end%>
+  </table>   
 
-    <% end %>
 </div>
+<% end %>
 
-<%= link_to "New customer", new_customer_path %>
-
-<div style="display:block;">
-  <%= link_to "All orders", "/orders" %>
-</div>
