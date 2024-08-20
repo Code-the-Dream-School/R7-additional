@@ -8,6 +8,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <% if flash[:alert].present? %>
+    <p class="my_alert"><%= flash[:alert] %></p>
+<% end %>
   </head>
 
   <body>
