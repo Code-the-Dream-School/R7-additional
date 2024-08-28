@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
   def show
+    @customer = Customer.includes(:orders).find(params[:id])
   end
 
   # GET /customers/new
@@ -74,10 +75,14 @@ end
 
   # DELETE /customers/1 or /customers/1.json
   def destroy
-    @customer.destroy
-
+    if @customer.destroy
+      flash.notice = "The customer record was successfully deleted."
+    else
+      flash.alert = "That customer record could not be deleted because the customer has orders."
+    end
+  
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+      format.html { redirect_to customers_url }
       format.json { head :no_content }
     end
   end

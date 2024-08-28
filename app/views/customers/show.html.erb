@@ -2,6 +2,33 @@
 
 <%= render @customer %>
 
+<% if @customer.orders.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer.orders.each do |order| %>
+        <tr>
+          <td><%= order.product_name %></td>
+          <td><%= order.product_count %></td>
+          <td>
+            <%= link_to 'Show', order_path(order) %> |
+            <%= link_to 'Edit', edit_order_path(order) %> |
+            <%= button_to 'Destroy', order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No orders found for this customer.</p>
+<% end %>
+
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
