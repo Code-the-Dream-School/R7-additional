@@ -2,6 +2,27 @@
 
 <%= render @customer %>
 
+<table>
+  <thead>
+  <tr>
+    <th>Orders</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @customer.orders.each do |order| %>
+      <tr>
+        <td><%= order.product_name %></td>
+        <td><%= order.product_count %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= button_to "Destroy", order, method: :delete, data: { turbo_confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
