@@ -68,6 +68,10 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
 
+    flash.notice = "The customer record was successfully deleted."
+    rescue ActiveRecord::InvalidForeignKey
+    flash.notice = "That customer record could not be deleted, because the customer has orders."
+
     respond_to do |format|
       format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
       format.json { head :no_content }

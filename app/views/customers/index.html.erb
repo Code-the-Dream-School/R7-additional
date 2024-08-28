@@ -7,6 +7,8 @@
     <%= render customer %>
     <p>
       <%= link_to "Show this customer", customer %>
+      <%= link_to 'Edit', edit_customer_path(customer) %> |
+      <%= link_to 'Destroy', customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   <% end %>
 </div>
