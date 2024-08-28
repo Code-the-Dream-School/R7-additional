@@ -1,0 +1,31 @@
+<%= form_with(model: order) do |form| %>
+  <% if @order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :customer_id, "Select Customer" %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :first_name, { prompt: "Choose a customer" } %>
+  </div>
+
+  <div>
+    <%= form.label :product_name, style: "display: block" %>
+    <%= form.text_field :product_name %>
+  </div>
+
+  <div>
+    <%= form.label :product_count, style: "display: block" %>
+    <%= form.number_field :product_count %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

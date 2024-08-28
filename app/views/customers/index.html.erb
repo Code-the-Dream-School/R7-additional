@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<%= link_to "New customer", new_customer_path, class: "btn btn-primary" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Number of Orders</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.full_name %></td>
+        <td><%= customer.orders.count %></td>
+        <td>
+          <%= link_to 'Show', customer_path(customer), class: 'btn btn-info btn-sm' %>
+          <%= link_to 'Edit', edit_customer_path(customer), class: 'btn btn-warning btn-sm' %>
+          <%= button_to 'Delete', customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
