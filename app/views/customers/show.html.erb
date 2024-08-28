@@ -1,0 +1,41 @@
+<h1><%= @customer.full_name %> Details</h1>
+
+<p>
+  <strong>Email:</strong>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @customer.phone_number %>
+</p>
+
+<h2>Orders</h2>
+<% if @customer.orders.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer.orders.each do |order| %>
+        <tr>
+          <td><%= order.product_name %></td>
+          <td><%= order.product_count %></td>
+          <td>
+            <%= link_to 'Show', order_path(order) %> |
+            <%= link_to 'Edit', edit_order_path(order) %> |
+            <%= link_to 'Destroy', order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No orders found for this customer.</p>
+<% end %>
+
+<%= link_to 'Back to Customers', customers_path %>
