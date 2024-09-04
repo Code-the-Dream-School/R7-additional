@@ -1,0 +1,17 @@
+<h1>Order #<%= @order.id %> Details</h1>
+
+<div class="card border border-2 border-success p-3 mt-3" style="width: 18rem;">
+  <div class="card-header">
+    <h4>Order Details</h4>
+  </div>
+  <div class="card-body">
+    <p><strong>Product Name:</strong> <%= @order.product_name %></p>
+    <p><strong>Product Count:</strong> <%= @order.product_count %></p>
+    <p><strong>Customer:</strong> <%= @order.customer.full_name %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Edit', edit_order_path(@order), class: 'btn btn-primary' %> |
+    <%= link_to 'Back', orders_path, class: 'btn btn-secondary' %> |
+    <%= link_to 'Destroy', order_path(@order), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+</div>

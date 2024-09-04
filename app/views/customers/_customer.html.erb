@@ -1,24 +1,13 @@
 <div id="<%= dom_id customer %>">
  
-  <p>
-    <strong>Full name:</strong>
-    <%= customer.full_name %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= customer.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-  </p>
-
-  <p>
-    <strong>Number of Orders</strong>
-    <%= customer.orders.count %>
-  </p>
-
-
-</div>
+<tr>
+  <td><%= customer.full_name %></td>
+  <td><%= customer.email %></td>
+  <td><%= customer.phone %></td>
+  <td><%= customer.orders.count %></td>
+  <td>
+    <%= link_to "Show", customer_path(customer), class: "btn btn-primary" %> |
+    <%= link_to "Edit", edit_customer_path(customer), class: "btn btn-primary" %> |
+    <%= link_to "Delete", customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+  </td>
+</tr>

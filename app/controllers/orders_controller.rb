@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
     # GET /orders/:id/edit
     def edit
       # @order is already set by the before_action :set_order
+      @order = Order.find(params[:id])
     end
   
     # POST /orders
@@ -56,7 +57,8 @@ class OrdersController < ApplicationController
   
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:customer_id, :product_id, :quantity, :total_price, :status)
+     # params.require(:order).permit(:customer_id, :product_id, :quantity, :total_price, :status)
+      params.require(:order).permit(:product_name, :product_count, :customer_id)
     end
   end
   

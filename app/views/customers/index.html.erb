@@ -2,15 +2,21 @@
 
 <h1>Customers</h1>
 
-<div id="customers">
-  <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-      <%= link_to 'Edit', edit_customer_path(customer) %> |
-      <%= link_to 'Destroy', customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Number of Orders</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <%= render partial: 'customer', locals: { customer: customer } %>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New customer", new_customer_path %>
+<%= link_to "New customer", new_customer_path, class: "btn btn-primary" %>

@@ -1,38 +1,34 @@
-<%= form_with(model: @order, local: true) do |f| %>
-  <% if @order.errors.any? %>
+<%= form_with(model: @customer, local: true) do |f| %>
+  <% if @customer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this order from being saved:</h2>
       <ul>
-        <% @order.errors.full_messages.each do |message| %>
+        <% @customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :product_name %>
-    <%= f.text_field :product_name %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :product_count %>
-    <%= f.number_field :product_count %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= f.label :customer_id %>
-    <%= f.collection_select :customer_id, Customer.all, :id, :full_name, include_blank: true %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
   </div>
 
   <div class="field">
-    <%= f.label :total_price %>
-    <%= f.number_field :total_price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="actions">
