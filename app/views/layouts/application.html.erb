@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class = "container-fluid">
+       <%= yield %>
+    </div>
+
+    <% if flash[:alert].present? %>
+     <div class="alert alert-danger" role="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+  <% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+  
   </body>
 </html>
