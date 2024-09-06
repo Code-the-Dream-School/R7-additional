@@ -1,15 +1,18 @@
-<div id"<%= dom_id order %>
-  <p>
-    <strong>Customer:</strong>
-    <%= order.customer.full_name %>
-  </p>
-  <p>
-    <strong>Product:</strong>
-    <%= order.product_name %>
-  </p>
-  <p>
-    <strong>Quantity</strong>
-    <%= order.product_count %>
-  </p>
-
+<div id="<%= dom_id order %>">
+  <div class="card-header">
+    <p>
+      <strong>Product:</strong>
+      <%= order.product_name %>
+    </p>
+  </div>
+  <div class="card-body">
+    <p>
+      <strong>Customer:</strong>
+      <%= order.customer.full_name %>
+    </p>
+    <p>
+      <strong>Quantity</strong>
+      <%= order.product_count %>
+    </p>
+  </div>
 </div>

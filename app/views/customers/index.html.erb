@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Customers</h1>
 
 <div id="customers">
@@ -16,12 +14,12 @@
       <tr>
         <td><%= customer.full_name %></td>
         <td><%= customer.orders.count %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= button_to "Destroy", customer, method: :delete, data: { turbo_confirm: "Are you sure?"} %></td>
+        <td><%= link_to 'Show', customer, :class => "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer), :class => "btn btn-primary" %></td>
+        <td><%= button_to "Delete Record", customer, method: :delete, data: { turbo_confirm: "Are you sure?"}, :class => "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
-<%= link_to "New customer", new_customer_path %>
+<%= link_to "New customer", new_customer_path, :class => "btn btn-primary" %>

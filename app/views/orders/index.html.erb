@@ -2,13 +2,19 @@
 
 <h1>Orders</h1>
 
-<div id="orders">
+<div id="orders" class="container-fluid row">
   <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
+    <div class="card border border-2 border-success p-1 mt-3" style="width: 18rem;">
+      <%= render order %>
+      <div class="card-footer">
+        <p>
+          <%= link_to "Show this order", order, :class => "btn btn-primary" %>
+          <%= link_to 'Edit order', edit_order_path(order), :class => "btn btn-primary" %>
+          <%= button_to "Delete order", order, method: :delete, data: { turbo_confirm: "Are you sure?"}, :class => "btn btn-primary" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New order", new_order_path %>
+<%= link_to "New order", new_order_path, :class => "btn btn-primary" %>

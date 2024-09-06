@@ -11,9 +11,54 @@
   </head>
 
   <body>
-    <% if flash[:alert].present? %>
-      <p class="my_alert"><%= flash[:alert] %></p>
-    <% end %>
-    <%= yield %>
+
+  <div class="container-fluid">
+  <div class="mt-4 p-5 bg-primary text-white rounded banner-background">
+    <h1>Customers and Orders</h1>
+    <p>This is a sample application that associates orders with customers.</p>
+  </div>
+  <% if flash[:alert].present? %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice].present? %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+  <nav class="navbar navbar-expand-sm bg-light">
+
+  <div class="container-fluid">
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+      Customers <%= icon('fa-solid', 'user')%>
+    </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">
+            <a class="nav-link" href=<%= customers_path %>>Customer List</a>
+          </li>
+          <li class="dropdown-item">
+          <a class="nav-link" href=<%= new_customer_path%>>New Customer</a>
+        </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+      Orders <%= icon('fa-solid', 'boxes-packing')%>
+    </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">
+            <a class="nav-link" href=<%= orders_path %>>Order List</a>
+          </li>
+          <li class="dropdown-item">
+          <a class="nav-link" href=<%= new_order_path %>>New Order</a>
+        </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+      <%= yield %>
+  </div>
   </body>
 </html>
